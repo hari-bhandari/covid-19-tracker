@@ -1,12 +1,12 @@
 import React from 'react';
 import './bootstrap.min.css'
 import './App.css';
-import Navbar from "./Components/Layout/Navbar";
+import HomePage from "./Components/HomePage";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+        <HomePage/>
     </div>
   );
 }
