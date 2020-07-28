@@ -9,6 +9,7 @@ const HomePage = () => {
         <div id="wrapper">
             <Navbar/>
             <Cards/>
+
         </div>
         </body>
     );
