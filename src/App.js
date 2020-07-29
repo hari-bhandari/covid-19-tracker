@@ -6,15 +6,13 @@ import HomePage from "./Components/HomePage";
 
 function App() {
     return (
+        <CovidState>
+            <div className="App">
+                <HomePage/>
+            </div>
+        </CovidState>
+            )
+            ;
+            }
 
-    <div className="App">
-        <CovidState/>
-        <HomePage/>
-        <CovidState/>
-    </div>
-
-)
-    ;
-}
-
-export default App;
+            export default App;
