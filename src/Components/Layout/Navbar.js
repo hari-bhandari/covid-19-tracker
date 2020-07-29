@@ -10,8 +10,8 @@ const Navbar = () => {
                         <div className="sidebar-brand-text mx-3"><span>COVID TRACKER</span></div>
                     </a>
                         <ul className="nav navbar-nav text-light" id="accordionSidebar">
-                            <li className="nav-item" role="presentation"><a className="nav-link active" href="index.html"><i className="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
-                            <li className="nav-item" role="presentation"><a className="nav-link" href="register.html"><i className="fas fa-user-circle"></i><span>International</span></a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link active" href="!#"><i className="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                            <li className="nav-item" role="presentation"><a className="nav-link" href="!#"><i className="fas fa-user-circle"></i><span>International</span></a></li>
                         </ul>
 
                 </div>

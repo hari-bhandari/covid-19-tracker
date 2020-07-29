@@ -1,53 +1,33 @@
-import React from 'react';
-
+import React, {useContext} from 'react';
+import SearchBar from "../Utils/SearchBar";
+import CovidContext from "../../../Context/COVID/covidContext";
+import './table.css'
 const Table = () => {
+    const covidContext=useContext(CovidContext)
+    const{countries}=covidContext
     return (
         <div className="col-lg-5 col-xl-4">
             <div className="card shadow mb-4">
                 <div className="card-header d-flex justify-content-between align-items-center">
-                    <h6 className="text-primary font-weight-bold m-0">Revenue Sources</h6>
+                    <SearchBar/>
                 </div>
-                <div className="card-body">
+                <div className="table-wrapper-scroll-y my-custom-scrollbar">
                     <table className="table  table-striped table-dark">
                         <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Country</th>
+                            <th scope="col">Infected</th>
+                            <th scope="col">Deaths</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td>Larry</td>
-                            <td>the Bird</td>
-                            <td>@twitter</td>
-                        </tr>
+                        {countries&&countries.map((country)=>(
+                            <tr>
+                            <td>{country.country}</td>
+                            <td>{country.cases}</td>
+                            <td>{country.deaths}</td>
+                            </tr>
+                        ))}
                         </tbody>
                     </table>
             </div>
