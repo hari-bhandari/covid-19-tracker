@@ -1,3 +1,3 @@
 import {createContext} from 'react'
 const covidContext=createContext()
-export default createContext;
+export default covidContext;
