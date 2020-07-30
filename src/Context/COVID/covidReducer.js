@@ -1,4 +1,4 @@
-import {CHANGE_COUNTRY, CHANGE_CURRENTLY_SELECTED, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
+import {CHANGE_COUNTRY, CHANGE_CURRENTLY_SELECTED, CLEAR_FILTER, FILTER_COUNTRIES, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
 
 export default (state,action)=>{
     switch (action.type){
@@ -6,8 +6,8 @@ export default (state,action)=>{
             return {
                 ...state,
                 countries: action.payload,
-                filtered:action.payload,
                 sortedArray:action.payload.sort((a,b)=>(a.cases>b.cases?-1:1)),
+                filtered: action.payload,
                 loaded:false
 
             }
@@ -39,6 +39,19 @@ export default (state,action)=>{
             return {
                 ...state,
                 currentlySelected:action.payload
+            }
+        case FILTER_COUNTRIES:
+            return {
+                ...state,
+                filtered: state.sortedArray.filter(country=>{
+                    const regex = new RegExp(`${action.payload}`, 'gi');
+                    return country.country.match(regex) || country.continent.match(regex)
+                })
+            }
+        case CLEAR_FILTER:
+            return {
+                ...state,
+                filtered: null
             }
         default:
             return state

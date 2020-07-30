@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import covidReducer from "./covidReducer";
 import covidContext from "./covidContext"
-import {CHANGE_COUNTRY, CHANGE_CURRENTLY_SELECTED, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
+import {CHANGE_COUNTRY, CHANGE_CURRENTLY_SELECTED, CLEAR_FILTER, FILTER_COUNTRIES, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
 
 const CovidState = props => {
     const initialState = {
@@ -37,6 +37,17 @@ const CovidState = props => {
                 payload: 'SomeThing went Wrong, Please try again later'
             })
         }
+    }
+    const filterCountries=(value)=>{
+        dispatch({
+            type:FILTER_COUNTRIES,
+            payload:value
+        })
+    }
+    const clearFilter=()=>{
+        dispatch({
+            type:CLEAR_FILTER
+        })
     }
     const setCurrentlySelected=(selected)=>{
         dispatch({
@@ -106,7 +117,9 @@ const CovidState = props => {
             getOverallData,
             getCountries,
             changeCountry,
-            setCurrentlySelected
+            setCurrentlySelected,
+            filterCountries,
+            clearFilter
         }}>
             {props.children}
         </covidContext.Provider>
