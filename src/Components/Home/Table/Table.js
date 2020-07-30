@@ -4,7 +4,7 @@ import CovidContext from "../../../Context/COVID/covidContext";
 import './table.css'
 const Table = () => {
     const covidContext=useContext(CovidContext)
-    const{countries}=covidContext
+    const{sortedArray}=covidContext
     return (
         <div className="col-lg-5 col-xl-4">
             <div className="card shadow mb-4">
@@ -21,7 +21,7 @@ const Table = () => {
                         </tr>
                         </thead>
                         <tbody>
-                        {countries&&countries.map((country)=>(
+                        {sortedArray&&sortedArray.map((country)=>(
                             <tr>
                             <td>{country.country}</td>
                             <td>{country.cases}</td>

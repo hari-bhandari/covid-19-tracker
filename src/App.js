@@ -11,8 +11,8 @@ function App() {
                 <HomePage/>
             </div>
         </CovidState>
-            )
-            ;
-            }
+    )
+        ;
+}
 
-            export default App;
+export default App;

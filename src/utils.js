@@ -25,7 +25,6 @@ export const showDataOnMap=(data,casesType="cases")=>
                         radius={Math.sqrt(country[casesType])*casesTypeColours[casesType].multiplier}
 
         >
-            {console.log(country)}
             <Popup>
                 <div className={"info-container"}>
                     <div  className="info-flag" style={{backgroundImage:`url(${country.countryInfo.flag}`}} />

@@ -1,4 +1,4 @@
-import {CHANGE_COUNTRY, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
+import {CHANGE_COUNTRY, CHANGE_CURRENTLY_SELECTED, GET_COUNTRIES, GET_COUNTRIES_ERROR, GET_OVERALL, GET_OVERALL_ERROR} from "../types";
 
 export default (state,action)=>{
     switch (action.type){
@@ -7,6 +7,7 @@ export default (state,action)=>{
                 ...state,
                 countries: action.payload,
                 filtered:action.payload,
+                sortedArray:action.payload.sort((a,b)=>(a.cases>b.cases?-1:1)),
                 loaded:false
 
             }
@@ -24,13 +25,20 @@ export default (state,action)=>{
                 ...state,
                 overall:action.payload,
                 loadedOverall:false,
-                selectedCountry:'International'
+                position:{lat:34.380746,lng:-40.4796},
+                scale:2
             }
         case CHANGE_COUNTRY:
             return {
                 ...state,
-                overall:action.payload[1],
-                selectedCountry: action.payload[0]
+                overall:action.payload,
+                position:{lat:action.payload.countryInfo.lat,lng:action.payload.countryInfo.long},
+                scale: 6
+            }
+        case CHANGE_CURRENTLY_SELECTED:
+            return {
+                ...state,
+                currentlySelected:action.payload
             }
         default:
             return state

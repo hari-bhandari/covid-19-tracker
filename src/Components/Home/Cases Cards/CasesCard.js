@@ -1,9 +1,15 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import CovidContext from "../../../Context/COVID/covidContext";
 
-const CasesCard = ({name,value,addedToday,type,icon}) => {
+const CasesCard = ({name,value,addedToday,type,icon,selected}) => {
+    const covidContext=useContext(CovidContext)
+    const{setCurrentlySelected,currentlySelected}=covidContext
     return (
-            <div className="col-md-6 col-xl-4 mb-4">
-                <div className={`card shadow border-left-${type} py-2`}>
+
+            <div className="col-md-6 col-xl-4 mb-4" onClick={()=>{
+                setCurrentlySelected(selected)
+            }}>
+                <div className={`card shadow border-left-${type} py-2 ${currentlySelected===selected?'bg-info':''}`} >
                     <div className="card-body">
                         <div className="row align-items-center no-gutters">
                             <div className="col mr-2">

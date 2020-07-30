@@ -9,13 +9,12 @@ import CovidContext from "../Context/COVID/covidContext";
 
 const HomePage = () => {
     const covidContext=useContext(CovidContext)
-    const{getCountries,countries,loading,getOverallData}=covidContext
-
+    const{getCountries,position,scale,loading,getOverallData}=covidContext
+    const[center,setCenter]=[55.3721,3.4360]
     useEffect(()=>{
         getOverallData()
         getCountries()
     },[])
-    const center={lat:34.380746,lng:-40.4796}
     if(loading){
         return (
             <div>Loading</div>
@@ -29,7 +28,7 @@ const HomePage = () => {
                 <div id="content">
                     <Cards/>
                     <div className="row">
-                        <Map center={center} zoom={10}/>
+                        <Map center={position} zoom={scale}/>
                         <Table/>
                     </div>
                 </div>

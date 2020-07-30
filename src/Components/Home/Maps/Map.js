@@ -6,7 +6,7 @@ import {showDataOnMap} from "../../../utils";
 
 const Map = ({center,zoom}) => {
     const covidContext=useContext(CovidContext)
-    const{countries}=covidContext
+    const{countries,currentlySelected}=covidContext
 
     return (
         <div className="col-lg-7 col-xl-8" style={{height:"100%"}}>
@@ -15,7 +15,7 @@ const Map = ({center,zoom}) => {
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     {/*loopThrough and draw circles*/}
-                    {countries && showDataOnMap(countries)}
+                    {countries && showDataOnMap(countries,currentlySelected)}
                 </LeafletMap>
             </div>
         </div>
