@@ -28,7 +28,7 @@ export default (state,action)=>{
         case CHANGE_COUNTRY:
             return {
                 ...state,
-                overall:state.countries[action.payload]
+                overall:action.payload
 
             }
         default:

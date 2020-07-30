@@ -15,7 +15,7 @@ const ChooseCountry =  () => {
             <select name="format" id="format" onChange={onChange}>
                 <option selected value={"International"}>International</option>
                 {countries&&countries.map((country,index)=>(
-                    <option value={country.country} key={index}>{country.country}</option>
+                    <option value={country.countryInfo.iso2} key={index}>{country.country}</option>
                 ))}
             </select>
         </div>

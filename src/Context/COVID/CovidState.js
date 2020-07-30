@@ -33,15 +33,30 @@ const CovidState = props => {
             })
         }
     }
-    const changeCountry= (country)=>{
+    const changeCountry= async (country)=>{
         if(country==='International'){
              getOverallData()
         }
         else{
-            dispatch({
-                type:CHANGE_COUNTRY,
-                payload:country
-            })
+            try {
+                const requestOptions = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+
+                const res = await fetch(`https://disease.sh/v3/covid-19/countries/${country}`, requestOptions)
+                const resJson=await res.json()
+                dispatch({
+                    type:CHANGE_COUNTRY,
+                    payload:resJson
+                })
+            }catch (e){
+                dispatch({
+                    type:GET_COUNTRIES_ERROR,
+                    payload:'SomeThing went Wrong, Please try again later'
+                })
+            }
+
         }
 
     }
