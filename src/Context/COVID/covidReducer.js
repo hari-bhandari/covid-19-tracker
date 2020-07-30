@@ -23,13 +23,14 @@ export default (state,action)=>{
             return {
                 ...state,
                 overall:action.payload,
-                loadedOverall:false
+                loadedOverall:false,
+                selectedCountry:'International'
             }
         case CHANGE_COUNTRY:
             return {
                 ...state,
-                overall:action.payload
-
+                overall:action.payload[1],
+                selectedCountry: action.payload[0]
             }
         default:
             return state

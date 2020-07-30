@@ -9,10 +9,11 @@ const CovidState = props => {
         loaded:false,
         loadedOverall:false,
         filtered:null,
-        error:null
+        error:null,
+        selectedCountry:'International'
     }
-    const[state,dispatch]=useReducer(covidReducer,initialState)
 
+    const[state,dispatch]=useReducer(covidReducer,initialState)
     const getCountries=async ()=>{
         try {
             const requestOptions = {
@@ -48,7 +49,7 @@ const CovidState = props => {
                 const resJson=await res.json()
                 dispatch({
                     type:CHANGE_COUNTRY,
-                    payload:resJson
+                    payload:[country,resJson]
                 })
             }catch (e){
                 dispatch({
