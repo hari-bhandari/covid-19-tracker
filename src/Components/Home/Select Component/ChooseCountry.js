@@ -6,10 +6,13 @@ const ChooseCountry =  () => {
     const{countries,changeCountry,overall}=covidContext
     const[selectedCountry,setSelectedCountry]=useState('International')
     useEffect(()=>{
-        if(countries){
-            setSelectedCountry(localStorage.getItem("selectedCountry"))
-            changeCountry(localStorage.getItem("selectedCountry"))
+        if(localStorage.getItem('selectedCountry')){
+            if(countries){
+                setSelectedCountry(localStorage.getItem("selectedCountry"))
+                changeCountry(localStorage.getItem("selectedCountry"))
+            }
         }
+
     },[countries])
     const onChange=(e)=>{
         localStorage.setItem("selectedCountry",e.target.value)
