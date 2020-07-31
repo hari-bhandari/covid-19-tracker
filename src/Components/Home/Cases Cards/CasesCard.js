@@ -6,7 +6,7 @@ const CasesCard = ({name,value,addedToday,type,icon,selected}) => {
     const{setCurrentlySelected,currentlySelected}=covidContext
     return (
 
-            <div className="col-md-6 col-xl-4 mb-4" onClick={()=>{
+            <div className=" col-xl-4 col-md-4 mb-4 card-cases " style={{}} onClick={()=>{
                 setCurrentlySelected(selected)
             }}>
                 <div className={`card shadow border-left-${type} py-2 ${currentlySelected===selected?'bg-info':''}`} >

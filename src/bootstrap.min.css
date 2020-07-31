@@ -406,7 +406,9 @@ hr {
     padding: .2em;
     background-color: #fcf8e3
 }
-
+.card-cases:hover{
+    cursor: pointer;
+}
 .list-inline, .list-unstyled {
     padding-left: 0;
     list-style: none
